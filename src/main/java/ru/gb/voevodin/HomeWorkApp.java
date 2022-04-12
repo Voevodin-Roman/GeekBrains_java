@@ -1,7 +1,7 @@
 package ru.gb.voevodin;
 
 public class HomeWorkApp {
-    public static void TheeWords() {
+    public static void printtheeWords() {
         System.out.println("Orange");
         System.out.println("Banana");
         System.out.println("Apple");
