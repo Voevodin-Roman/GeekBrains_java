@@ -36,6 +36,8 @@ public class HomeWorkApp {
     }
     public static void main(String[] args) {
         printTheeWords();
+        checkSumSing();
+        printColor()
         compareNumbers();
     }
 }
