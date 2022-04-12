@@ -40,4 +40,5 @@ public class HomeWorkApp {
         printColor()
         compareNumbers();
     }
+
 }
