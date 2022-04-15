@@ -2,15 +2,19 @@ package ru.gb.voevodin;
 
 public class HomeWorkApp2 {
     public static void main(String[] args) {
-        int a = 9;
+        int a = 1;
         int b = 2;
-        int year = 1999;
+        int year = 1986;
         String text = "Печатаем текст";
         System.out.println("Задание 1 - " + checkingTwoNumbers(a , b));
         realNumberSign(a);
         System.out.println("Задание 3 - " + numberState(a));
         printText(a, text);
-        leapYearDefinition(year);
+        if (leapYearDefinition(year) == true) {
+            System.out.println("Задание 5 - Год високосный ");
+        }else{
+             System.out.println("Задание 5 - Год не високосный");
+        }
     }
     //Задание 1
     public static boolean checkingTwoNumbers(int a, int b) {
@@ -23,9 +27,9 @@ public class HomeWorkApp2 {
     //Задание 2
     public static void realNumberSign(int a){
         if(a < 0){
-            System.out.println("Задание 2 - " + "Число отрицательное");
+            System.out.println("Задание 2 - Число отрицательное");
         }else{
-            System.out.println("Задание 2 - " + "Число положительное");
+            System.out.println("Задание 2 - Число положительное");
         }
     }
     //Задание 3
@@ -44,7 +48,15 @@ public class HomeWorkApp2 {
         }
     }
     //Задание 5
-    public static void leapYearDefinition(int y){
-
+    public static boolean leapYearDefinition(int y){
+        if(y % 400 == 0){
+            return true;
+        }else if (y % 100 == 0){
+            return false;
+        }else  if (y % 4 == 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
