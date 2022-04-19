@@ -1,6 +1,5 @@
 package ru.gb.voevodin;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 public class Homework_3 {
     public static void main(String[] args) {
@@ -61,16 +60,48 @@ public class Homework_3 {
         System.out.println("Задание 6: Минимальное значение: " + min);
         System.out.println("Задание 6: Максимальное значение: " + max);
 
+        //Задание 7
+        int[] array7 = new int[3];
+        for (int u = 0; u < array7.length; u++) { //Заполняем массив случайными числами
+            w[u] = new Random().nextInt(99);
+        }
+        System.out.println("Задание 7: массив " + Arrays.toString(array7));
+        if (checkArrey(array7) == true){
+            System.out.println("Данный массив делится внутри себя на равные части ");
+        }else{
+            System.out.println("Данный массив не делится внутри себя на равные части ");
+        }
+
+
+
     }
 
-        //Задание 5
-        public static int[] createArray ( int len, int initialValue){
+    //Задание 5
+    public static int[] createArray ( int len, int initialValue){
             int[] array = new int[len];
             for (int i = 0; i < array.length; i++) {
                 array[i] = initialValue;
             }
             return array;
         }
+    //Задание 7
+    public static boolean checkArrey(int[] a){
+        int sum = 0;
+        for (int i = 0; i < a.length; i++) {
+            sum = sum + a[i];
+        }
+        for (int j = 0; j < a.length; j++) {
+            if (sum - a[j] == a[j]){
+                return true;
+            }else if(sum == 0) {
+                return false;
+            }else{
+                sum = sum - a[j];
+            }
+
+        }
+
+    }
 
 
 }
