@@ -61,10 +61,10 @@ public class Homework_3 {
         System.out.println("Задание 6: Максимальное значение: " + max);
 
         //Задание 7
-        int[] array7 = new int[3];
-        for (int u = 0; u < array7.length; u++) { //Заполняем массив случайными числами
-            w[u] = new Random().nextInt(99);
-        }
+        int[] array7 = {1, 1, 1, 0, 0, 3};
+        //for (int u = 0; u < array7.length; u++) { //Заполняем массив случайными числами
+         //  array7[u] = new Random().nextInt(99);
+        //}
         System.out.println("Задание 7: массив " + Arrays.toString(array7));
         if (checkArrey(array7) == true){
             System.out.println("Данный массив делится внутри себя на равные части ");
@@ -91,17 +91,13 @@ public class Homework_3 {
             sum = sum + a[i];
         }
         for (int j = 0; j < a.length; j++) {
-            if (sum - a[j] == a[j]){
+            if (sum - a[j] == a[j]) {
                 return true;
-            }else if(sum == 0) {
+            } else if (sum == 0) {
                 return false;
-            }else{
+            } else {
                 sum = sum - a[j];
             }
-
         }
-
     }
-
-
 }
