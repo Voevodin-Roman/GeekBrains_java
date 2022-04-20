@@ -30,12 +30,13 @@ public class Homework_3 {
 
         //Задание 3
         int[] c = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        System.out.println("Задание 3: Начальный массив " + Arrays.toString(c));
         for (int k = 0; k < c.length; k++) {
             if (c[k] < 6) {
                 c[k] = c[k] * 2;
             }
         }
-        System.out.println("Задание 3: " + Arrays.toString(c));
+        System.out.println("Задание 3: Конечный массив " + Arrays.toString(c));
 
         //Задание 4
         int size = 5;
@@ -76,7 +77,7 @@ public class Homework_3 {
 
         //Задание 8
         int[] array8 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int positionShift = 4;
+        int positionShift = -2;
         System.out.println("Задание 8: Начальный массив " + Arrays.toString(array8));
         if(positionShift > array8.length -1 ){
             System.out.println("Ошибка. Заданное смещение <" + positionShift + "> больше длинны масcива");
