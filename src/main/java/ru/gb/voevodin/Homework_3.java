@@ -77,13 +77,10 @@ public class Homework_3 {
 
         //Задание 8
         int[] array8 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int positionShift = -2;
+        int positionShift = -21;
         System.out.println("Задание 8: Начальный массив " + Arrays.toString(array8));
-        if(positionShift > array8.length -1 ){
-            System.out.println("Ошибка. Заданное смещение <" + positionShift + "> больше длинны масcива");
-        }else {
-            System.out.println("Задание 8: Конечный массив, смещение на " + positionShift + " позиций " + Arrays.toString(mixingValuesInArray(array8, positionShift)));
-        }
+        System.out.println("Задание 8: Конечный массив, смещение на " + positionShift + " позиций " + Arrays.toString(mixingValuesInArray(array8, positionShift)));
+
     }
 
     //Задание 5
@@ -116,18 +113,19 @@ public class Homework_3 {
     }
     // Задание 8
     public static int[] mixingValuesInArray(int[] array, int a){
+        int check = a % array.length; //проверка на превышение величины смещения относительно длинны массива.
         Stack stack = new Stack<>();
         for (int i = 0; i < array.length; i++) {
             stack.push(array[array.length -1 -i]);
         }
         for (int i = 0; i < array.length; i++) {
             int t;
-            if(i + a >= 0 && i + a < array.length){
-                t = i + a;
-             }else if(i + a < 0) {
-                 t = array.length + i + a;
+            if(i + check >= 0 && i + check < array.length){
+                t = i + check;
+             }else if(i + check < 0) {
+                 t = array.length + i + check;
             }else{
-                t = (i + a) - array.length;
+                t = (i + check) - array.length;
              }
             array[t] = (int) stack.pop();
         }
