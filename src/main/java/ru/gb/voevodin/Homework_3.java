@@ -68,16 +68,15 @@ public class Homework_3 {
         for (int u = 0; u < array7.length; u++) { //Заполняем массив случайными числами
         array7[u] = new Random().nextInt(2);
         }
-        System.out.println("Задание 7: массив " + Arrays.toString(array7));
         if (checkBalance(array7)){
-            System.out.println("Данный массив делится внутри себя на равные части");
+            System.out.println("Массив " + Arrays.toString(array7) + " делится внутри себя на равные части");
         }else{
-            System.out.println("Данный массив не делится внутри себя на равные части");
+            System.out.println("Массив " + Arrays.toString(array7) + " не делится внутри себя на равные части");
         }
 
         //Задание 8
         int[] array8 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int positionShift = -21;
+        int positionShift = 4;
         System.out.println("Задание 8: Начальный массив " + Arrays.toString(array8));
         System.out.println("Задание 8: Конечный массив, смещение на " + positionShift + " позиций " + Arrays.toString(mixingValuesInArray(array8, positionShift)));
 
