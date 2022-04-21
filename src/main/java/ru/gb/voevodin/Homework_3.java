@@ -76,7 +76,7 @@ public class Homework_3 {
 
         //Задание 8
         int[] array8 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int positionShift = 4;
+        int positionShift = 4; //величина сдвига.
         System.out.println("Задание 8: Начальный массив " + Arrays.toString(array8));
         System.out.println("Задание 8: Конечный массив, смещение на " + positionShift + " позиций " + Arrays.toString(mixingValuesInArray(array8, positionShift)));
 
