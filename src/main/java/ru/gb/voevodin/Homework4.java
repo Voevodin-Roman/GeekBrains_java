@@ -1,6 +1,5 @@
 package ru.gb.voevodin;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 public class Homework4 {
@@ -19,25 +18,17 @@ public class Homework4 {
     private static final String ANSI_YELLOW_BACKGROUND = "\u001b[48;5;226m";
     private static final int CELL_OPEN = 1;
     private static final int CELL_CLOSE = 0;
-    private static final int CELL_FLAG = 100000;
-    private static int LATEST = 13;
-    private static int HEIGHT = 13;
-    private static int MINE_COUNT = 40;
+    private static final int CELL_FLAG = 100000000;
+    private static final int LATEST = 18;
+    private static final int HEIGHT = 9;
+    private static final int MINE_COUNT = 20;
     private static final int MINE = 1000;
     private static final int EMPTY = -1;
-    private static int CHARACTERS = LATEST * HEIGHT;
-    private  static int[][] MINEBORD = generateBoard();
+    private static final int CHARACTERS = LATEST * HEIGHT;
+    private static final int[][] BORDERLINE = generateBoard();
 
     public static void main(String[] args) {
-        System.out.println("Введите ширину минного поля");
-        final Scanner scanner1 = new Scanner(System.in);
-        LATEST = Integer.parseInt(scanner1.nextLine());
-        System.out.println("Введите высоту минного поля");
-        final Scanner scanner2 = new Scanner(System.in);
-        HEIGHT = Integer.parseInt(scanner2.nextLine());
-        System.out.println("Введите количество мин");
-        final Scanner scanner3 = new Scanner(System.in);
-        MINE_COUNT = Integer.parseInt(scanner3.nextLine());
+        //optionsMyGame();
         System.out.println("Для открытия ячейки введите её номер");
         System.out.println("Что бы пометить ячейку флагом, поставьте после номера ячейки звёздочку *");
         System.out.println("После установки флага ячейка помечается желтым флагом");
@@ -48,17 +39,17 @@ public class Homework4 {
             for (int i = 0; i < HEIGHT; i++){
                 System.out.println();
                 for (int j = 0; j < LATEST; j++) {
-                    if(MINEBORD[i][j] == 1000){
+                    if(BORDERLINE[i][j] == 1000){
                         System.out.print(ANSI_RED_BACKGROUND + ANSI_GREY);
                         System.out.printf(printSpaces(), " ");
                         System.out.print(ANSI_RESET + " ");
                     }else {
-                        String cellColorend = getColorCode(MINEBORD[i][j]);
+                        String cellColorend = getColorCode(BORDERLINE[i][j]);
                         System.out.print(ANSI_BLACK_BACKGROUND + cellColorend);
-                        if (MINEBORD[i][j] == EMPTY) {
+                        if (BORDERLINE[i][j] == EMPTY) {
                             System.out.printf(printSpaces(), " ");
                         } else {
-                            System.out.printf(printSpaces(), MINEBORD[i][j]);
+                            System.out.printf(printSpaces(), BORDERLINE[i][j]);
                         }
                         System.out.print(ANSI_RESET + " ");
                     }
@@ -81,12 +72,11 @@ public class Homework4 {
     }
 
     public static boolean play() {
-        int[][] board = MINEBORD;
         int[][] moves = new int[HEIGHT][LATEST];
         boolean isPass;
         boolean win;
         do {
-            isPass = move(board, moves);
+            isPass = move(BORDERLINE, moves);
             win = isWin(moves);
         } while (isPass && !win);
 
@@ -97,7 +87,7 @@ public class Homework4 {
         final Scanner scanner = new Scanner(System.in);
         printBoard(board, moves);
         while (true) {
-            System.out.println("Введите номер ячейки и нажмите Enter,  ");
+            System.out.println("Введите номер ячейки и нажмите Enter что бы открыть её,  ");
             System.out.print("что бы пометить ячейку флагом добавьте звёздочку после номера ячейки: ");
             String s = scanner.nextLine();
             boolean star = false;
@@ -131,7 +121,7 @@ public class Homework4 {
             for (int j = 0; j < LATEST; j++) {
                 numberCell = numberCell +1;
                 if (moves[i][j] == CELL_CLOSE) {
-                    System.out.print(ANSI_GREY_BACKGROUND + ANSI_GREY); // + UDRERLINEDTEXT
+                    System.out.print(ANSI_GREY_BACKGROUND + ANSI_GREY);
                     System.out.printf(printSpaces(), numberCell);
                     System.out.print(ANSI_RESET + " ");
                     continue;
@@ -147,8 +137,8 @@ public class Homework4 {
                 System.out.print(ANSI_BLACK_BACKGROUND + cellColor);
                 if (board[i][j] == EMPTY) {
                     System.out.printf(printSpaces(), " ");
-               // } else if (isMine(board[i][j])) {
-               //     System.out.printf(printSpaces(), "*");
+               } else if (isMine(board[i][j])) {
+                    System.out.printf(printSpaces(), "*");
                 } else {
                     System.out.printf(printSpaces(), board[i][j]);
                 }
@@ -167,8 +157,6 @@ public class Homework4 {
         switch (i) {
             case EMPTY:
                 return ANSI_WHITE;
-            case MINE:
-                return ANSI_PURPLE;
             case 1:
                 return ANSI_BLUE;
             case 2:
@@ -179,6 +167,8 @@ public class Homework4 {
                 return ANSI_CYAN;
             case 5:
                 return ANSI_YELLOW;
+            case 6:
+                return ANSI_PURPLE;
         }
         return ANSI_GREY;
     }
