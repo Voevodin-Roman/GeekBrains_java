@@ -1,5 +1,6 @@
 package ru.gb.voevodin;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 public class Homework4 {
@@ -15,28 +16,54 @@ public class Homework4 {
     private static final String ANSI_GREY_BACKGROUND = "\u001b[48;5;246m";
     private static final String ANSI_BLACK_BACKGROUND = "\u001b[48;5;238m";
     private static final String ANSI_RED_BACKGROUND = "\u001b[48;5;9m";
+    private static final String ANSI_YELLOW_BACKGROUND = "\u001b[48;5;226m";
     private static final String UDRERLINEDTEXT = "\u0332";
     private static final int CELL_OPEN = 1;
     private static final int CELL_CLOSE = 0;
     private static final int CELL_FLAG = -10000;
     private static final int LATEST = 10;
     private static final int HEIGHT = 10;
-    private static final int MINE_COUNT = 20;
+    private static final int MINE_COUNT = 30;
     private static final int MINE = 1000;
     private static final int EMPTY = 0;
     private static int characters = LATEST * HEIGHT;
+    private  static int[][] MINEBORD = generateBoard();
 
     public static void main(String[] args) {
         System.out.println("Для открытия ячейки введите её номер");
         System.out.println("Что бы пометить ячейку красным флагом, поставьте после номера ячейки звёздочку *");
         final boolean isWin = play();
         if (isWin) {
-            System.out.println("Ура!\nВы победитель!");
+            System.out.println("Ура!Вы победитель!");
         } else {
-            System.out.println("Печалька!!!\nВы проиграли!");
+            for (int i = 0; i < HEIGHT; i++){
+                System.out.println();
+                for (int j = 0; j < LATEST; j++) {
+                    if(MINEBORD[i][j] == 1000){
+                        System.out.print(ANSI_RED_BACKGROUND + ANSI_GREY);
+                        System.out.print("   ");
+                        System.out.print(ANSI_RESET + " ");
+                    }else {
+                        //System.out.print(ANSI_GREY_BACKGROUND + ANSI_GREY);
+                        //System.out.printf("%3s", MINEBORD[i][j]);
+                        //System.out.print(ANSI_RESET + " ");
+                        String cellColorend = getColorCode(MINEBORD[i][j]);
+                        System.out.print(ANSI_BLACK_BACKGROUND + cellColorend);
+                        if (MINEBORD[i][j] == EMPTY) {
+                            System.out.printf("%3s", " ");
+                        } else if (isMine(MINEBORD[i][j])) {
+                            System.out.printf("%3s", "*");
+                        } else {
+                            System.out.printf("%3s", MINEBORD[i][j]);
+                        }
+                        System.out.print(ANSI_RESET + " ");
+                    }
+                }
+            }
         }
+        System.out.println();
+        System.out.println("Печалька!!!Вы проиграли!");
     }
-
     private static boolean isWin(final int[][] moves) {
         int openCell = 0;
         for (int[] lines : moves) {
@@ -50,7 +77,7 @@ public class Homework4 {
     }
 
     public static boolean play() {
-        int[][] board = generateBoard();
+        int[][] board = MINEBORD;
         int[][] moves = new int[HEIGHT][LATEST];
         boolean isPass;
         boolean win;
@@ -120,7 +147,7 @@ public class Homework4 {
                 }
                 if (moves[i][j] < 0) {
                     int p = moves[i][j] - CELL_FLAG;
-                    System.out.print(ANSI_RED_BACKGROUND + ANSI_GREY);
+                    System.out.print(ANSI_YELLOW_BACKGROUND + ANSI_GREY);
                     System.out.printf("%3s", p);
                     System.out.print(ANSI_RESET + " ");
                     continue;
