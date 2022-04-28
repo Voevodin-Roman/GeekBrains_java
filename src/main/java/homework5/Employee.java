@@ -25,12 +25,12 @@ public class Employee {
 
    //Задание 3: создаём методы для печати объекта
    public String toString() {
-      return  "ФИО — " + name + " " + last_name + " " + middle_name + '\n' +
+      return  "Сотрудник  — " + name + " " + last_name + " " + middle_name + '\n' +
               "Должность — " + function + '\n' +
               "Электронная почта — " + email + '\n' +
               "Номер телефона — " + phone +'\n' +
               "Заработная плата — " + salary +'\n' +
-              "Возраст — " + old;
+              "Возраст — " + old +'\n';
    }
 
    public void printEmployee(){
@@ -49,7 +49,6 @@ public class Employee {
       //Задание 5: печатаем сотрудников возрастом выше 40 лет
       for (int i = 0; i < arrayEmployees.length; i++) {
          if (arrayEmployees[i].old > 40) {
-            System.out.println("Сотрудник " + i);
             arrayEmployees[i].printEmployee();
          }
       }
