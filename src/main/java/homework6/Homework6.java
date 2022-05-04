@@ -1,6 +1,6 @@
 package homework6;
 
-public class Homework5 {
+public class Homework6 {
     public static void main(String[] args) {
 
         int runningDistance = 600;
