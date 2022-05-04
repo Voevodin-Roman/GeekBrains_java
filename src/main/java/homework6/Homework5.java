@@ -2,6 +2,7 @@ package homework6;
 
 public class Homework5 {
     public static void main(String[] args) {
+
         int runningDistance = 600;
         int swimingDistance = 11;
 
