@@ -1,8 +1,10 @@
 package homework6;
 
 public class Dog extends Animal {
+    static int numberObjects = 0;
     public Dog(int maxRunLength, int maxSwimLength, boolean knowsRun, boolean knowsSwim) {
         super(maxRunLength, maxSwimLength, knowsRun, knowsSwim);
+        numberObjects++;
     }
 
     @Override

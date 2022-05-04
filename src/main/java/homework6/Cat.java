@@ -1,8 +1,10 @@
 package homework6;
 
 public class Cat extends Animal {
+    static int numberObjects = 0;
     public Cat(int maxRunLength, int maxSwimLength, boolean knowsRun, boolean knowsSwim) {
         super(maxRunLength, maxSwimLength, knowsRun, knowsSwim);
+        numberObjects++;
     }
     @Override
     public void runind(int distanceRun) {
