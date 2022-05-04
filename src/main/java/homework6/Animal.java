@@ -39,10 +39,10 @@ public class Animal {
     }
 
     public void runind(int distanceRun) {
-        if (knowsSwim && distanceRun <= maxSwimLength) {
-            System.out.println(" проплыл " + distanceRun + "m");
+        if (knowsRun && distanceRun <= maxRunLength) {
+            System.out.println(" пробежал " + distanceRun + "m");
         } else {
-            System.out.println(" не проплыл " + distanceRun + "m");
+            System.out.println(" не пробежал " + distanceRun + "m");
         }
     }
 }
