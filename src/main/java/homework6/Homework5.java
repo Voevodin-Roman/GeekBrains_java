@@ -5,7 +5,6 @@ public class Homework5 {
 
         int runningDistance = 600;
         int swimingDistance = 11;
-
         Cat cat1 = new Cat(200, 0, true, false);
         Cat cat2 = new Cat(200, 0, true, false);
         Cat cat3 = new Cat(200, 0, true, false);
