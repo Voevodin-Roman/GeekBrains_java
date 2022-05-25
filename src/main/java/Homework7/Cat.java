@@ -10,25 +10,12 @@ public class Cat {
         this.appetite = appetite;
     }
     public void eat (Bowl p){
-        if(p.getFeed() > appetite){
+        if(p.getFeed() >= appetite){
             p.decreaseFeed(appetite);
             this.satiety = true;
         }
-        sated();
-
-       // if(p.getFeed() >= 0 &&  p.getFeed() < appetite){
-            //System.out.println(name + " с презрением понюхал содержимое миски и гордо утопал прочь.");
-
-       // }else {
-         //   p.decreaseFeed(appetite);
-         //   this.satiety = true;
-
-       // }
+        sated(satiety);
     }
-
-    private void sated() {
-    }
-
     private void sated(boolean satiety) {
         String a = satiety ?
                 name + " съел " + appetite + " единиц корма, но отвисшее до земли брюхо не позволило ему съесть больше." +

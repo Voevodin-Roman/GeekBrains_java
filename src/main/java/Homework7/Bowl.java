@@ -16,7 +16,7 @@ public class Bowl {
         System.out.println("В кошачьей миске " + feed + " единиц корма");
     }
     public void decreaseFeed(int n){
-        if( n < feed) {
+        if( n <= feed) {
             feed -= n;
         }
     }
