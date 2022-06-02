@@ -22,4 +22,8 @@ public class Bord {
     public int getMine() {
         return mine;
     }
+    public void goPlay(){
+        System.out.println(width + " " + height + " "  + mine);
+
+    }
 }
