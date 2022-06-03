@@ -25,7 +25,8 @@ public class Bord {
     }
     public void goPlay(){
         System.out.println(width + " " + height + " "  + mine);
-        GameBody gameBody = new GameBody(width,height, mine);
+        GameBody gameBody = new GameBody(width, height, mine);
+        gameBody.fillStatus();
 
 
     }
