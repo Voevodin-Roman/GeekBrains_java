@@ -1,5 +1,7 @@
 package ru.gb.voevodin.miner;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class GameBody {
@@ -20,17 +22,15 @@ public class GameBody {
     private final int width;
     private final int height;
     private final int mine;
-    private int summ;
+    private int multiplication;
     private static final int MINE = -10;
     private static final int EMPTY = -1;
-
-    Mine[] addmine = new Mine[summ];
 
     public GameBody(int width, int height, int mine) {
         this.width = width;
         this.height = height;
         this.mine = mine;
-        summ = width + height;
+        multiplication = width * height;
     }
 
 
@@ -53,34 +53,73 @@ public class GameBody {
         }
         return ANSI_GREY;
     }
-    public void CreatingCellsWithMines(){
-
+    private  int[][] fillStatus() {
+        int[][] board = new int[width][height];
+        int mines = mine;
         final Random random = new Random();
+        while (mines > 0) {
+            int x = random.nextInt(width), y = random.nextInt(height);
+            if (board[x][y]!= MINE) {
+                continue;
+            }
+            board[x][y] = MINE;
+            mines--;
+        }
+
+
+        return board;
+    public void CreatingCellsWithMines(int summ){
+
+        ArrayList <Integer> addmines = new ArrayList<>(summ);
+
+        for (int i = 0; i < summ; i++) {
+            addmines.add(i);
+        }
+        Collections.shuffle(addmines);
+        for (int i = 0; i < summ; i++) {
+            elements[i] = new Mine(0);
+        }
+
 
         for (int i = 0; i < mine; i++) {
-            for (int j = 0; j < summ; j++) {
-                int r = random.nextInt(summ);
-                if (addmine[r].getStatus() != -10){
-                    addmine[r] = new Mine(-10);
-                }
-            }
+            elements[addmines.get(i)].setStatus(MINE);
         }
 
+        for (int i = 0; i < summ; i++) {
+            if(elements[i].getStatus() != MINE){
+
+                elements[i].setStatus(getMinesCountAroundCell(i));
+            }
+
+        }
+        for (int i = 0; i < summ; i++) {
+            System.out.println(elements[i].getStatus());
+        }
+
+
+
+
     }
-    private static int getMinesCountAroundCell(int[][] board, int line, int row) {
+    private int getMinesCountAroundCell(int line) {
         int mCount = 0;
-        for (int i = line - 1; i <= line + 1; i++) {
-            for (int j = row - 1; j <= row + 1; j++) {
-                if (i < 0 || i >= HEIGHT || j < 0 || j >= LATEST) {
-                    continue;
-                }
-                if (isMine(board[i][j])) {
-                    mCount++;
+        for (int i = line - width - 1; i <= line -width + 1; i++) {
+            int mCount = 0;
+            for (int i = line - 1; i <= line + 1; i++) {
+                for (int j = row - 1; j <= row + 1; j++) {
+                    if (i < 0 || i >= HEIGHT || j < 0 || j >= LATEST) {
+                        continue;
+                    }
+                    if (isMine(board[i][j])) {
+                        mCount++;
+                    }
                 }
             }
-        }
-        return mCount;
+            return mCount;
     }
 
 
 }
+
+
+
+

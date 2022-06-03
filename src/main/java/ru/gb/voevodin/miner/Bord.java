@@ -9,6 +9,7 @@ public class Bord {
         this.width = width;
         this.height = height;
         this.mine = mine;
+
     }
 
     public int getWidth() {
@@ -24,6 +25,8 @@ public class Bord {
     }
     public void goPlay(){
         System.out.println(width + " " + height + " "  + mine);
+        GameBody gameBody = new GameBody(width,height, mine);
+
 
     }
 }

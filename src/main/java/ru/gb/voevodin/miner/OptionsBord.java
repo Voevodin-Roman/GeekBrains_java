@@ -51,7 +51,6 @@ public class OptionsBord extends JFrame {
                 int mine = Integer.parseInt(addmine.getText());
                 Bord bord = new  Bord(width, height, mine);
                 bord.goPlay();
-               // setVisible(false);
                 dispose();
 
 
