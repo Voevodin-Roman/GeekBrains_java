@@ -68,7 +68,9 @@ public class GameBody {
         }
 
 
-       board = calculateMines(board);
+        board = calculateMines(board);
+        GameLogic gameLogic = new GameLogic(board, width, height);
+
 
         for (int i = 0; i < board.length; i++) {
             System.out.println();
