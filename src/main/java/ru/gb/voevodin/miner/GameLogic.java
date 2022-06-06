@@ -33,7 +33,6 @@ public class GameLogic extends JFrame{
         setTitle("Найди мины");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(300, 300, width*60, height*60);
-        Font font8 = new Font("Arial", Font.BOLD, 8);
         setLayout(new GridLayout(width, height));
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -90,7 +89,7 @@ public class GameLogic extends JFrame{
             case -10:
                 return "<html><h2><font color=\"red\">@";
         }
-        return "0";
+        return "<html><h2><font color=\"gray\">0";
 
 
     }
