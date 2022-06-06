@@ -2,8 +2,6 @@ package ru.gb.voevodin.miner;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GameLogic extends JFrame{
 
@@ -92,7 +90,7 @@ public class GameLogic extends JFrame{
             case -10:
                 return "<html><h2><font color=\"red\">@";
         }
-        return " ";
+        return "0";
 
 
     }

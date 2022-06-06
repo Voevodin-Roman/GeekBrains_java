@@ -7,7 +7,6 @@ public class GameBody {
     private final int height;
     private final int mine;
     private static final int MINE = -10;
-    private static final int EMPTY = -1;
 
     public GameBody(int width, int height, int mine) {
         this.width = width;
@@ -31,14 +30,6 @@ public class GameBody {
         board = calculateMines(board);
         GameLogic gameLogic = new GameLogic(board, width, height);
 
-
-        for (int[] ints : board) {
-            System.out.println();
-            for (int anInt : ints) {
-                System.out.print(anInt + "   ");
-
-            }
-        }
     }
     private int[][] calculateMines(int[][] board) {
         for (int i = 0; i < width; i++) {
