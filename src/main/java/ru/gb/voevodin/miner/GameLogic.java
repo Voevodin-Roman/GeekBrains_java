@@ -2,9 +2,14 @@ package ru.gb.voevodin.miner;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class GameLogic extends JFrame{
 
+
+    private final int FLAG = -20;
     private final int[][] gameBord;
     private final int width;
     private final int height;
@@ -25,6 +30,7 @@ public class GameLogic extends JFrame{
                 jButtons[i][j] = a;
             }
         }
+
         creatingGameWindow();
     }
 
@@ -39,6 +45,50 @@ public class GameLogic extends JFrame{
                 add(jButtons[i][j]);
                 int finalI = i;
                 int finalJ = j;
+                jButtons[i][j].addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if (e.getButton() == MouseEvent.BUTTON1) {
+                            if (gameBord[finalI][finalJ] == -10) {
+                                dispose();
+                                gameOver();
+                            } else {
+                                jButtons[finalI][finalJ].setText(getColorCode(gameBord[finalI][finalJ]));
+                            }
+                        }else if(e.getButton() == MouseEvent.BUTTON3) {
+                            if (Objects.equals(jButtons[finalI][finalJ].getText(), getColorCode(FLAG))) {
+                                jButtons[finalI][finalJ].setText(" ");
+
+                            } else {
+                                jButtons[finalI][finalJ].setText(getColorCode(FLAG));
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+
+                    }
+
+
+                });
                 jButtons[i][j].addActionListener(actionEvent -> {
                     if(gameBord[finalI][finalJ] == -10){
                         dispose();
@@ -88,6 +138,8 @@ public class GameLogic extends JFrame{
                 return "<html><h2><font color=\"purple\">6";
             case -10:
                 return "<html><h2><font color=\"red\">@";
+            case -20:
+                return "<html><h1><font color=\"red\">?";
         }
         return "<html><h2><font color=\"gray\">0";
 
