@@ -23,6 +23,7 @@ public class GameLogic extends JFrame{
     }
 
     public void creatingArrayButton(){
+        //Заполняем массив кнопок
         jButtons = new JButton[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -35,11 +36,12 @@ public class GameLogic extends JFrame{
     }
 
     public void creatingGameWindow() {
-
+        //Формируем окно с игрой
         setTitle("Найди мины");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(300, 300, width*60, height*60);
         setLayout(new GridLayout(width, height));
+        // Создаем кнопки и вешаем на них слушатели
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 add(jButtons[i][j]);
@@ -47,6 +49,7 @@ public class GameLogic extends JFrame{
                 int finalJ = j;
                 jButtons[i][j].addMouseListener(new MouseListener() {
                     @Override
+                    // Обработка нажатия правой и левой клавиши мыши
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON1) {
                             if (gameBord[finalI][finalJ] == -10) {
@@ -66,28 +69,18 @@ public class GameLogic extends JFrame{
 
 
                     }
-
                     @Override
                     public void mousePressed(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseReleased(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseEntered(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseExited(MouseEvent e) {
-
                     }
-
-
                 });
                 jButtons[i][j].addActionListener(actionEvent -> {
                     if(gameBord[finalI][finalJ] == -10){
@@ -103,6 +96,7 @@ public class GameLogic extends JFrame{
         setVisible(true);
     }
     private void gameOver(){
+        // Метод выводящий заполненное игровое поле и сообщение о проигрыше
         setTitle("Найди мины");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(300, 300, width*60, height*60);
@@ -119,6 +113,7 @@ public class GameLogic extends JFrame{
     }
 
     private String getColorCode(final int i) {
+        //Метод для форматирования текста внутри кнопки
         switch (i) {
             case 1:
                 return "<html><h2><font color=\"blue\">1";

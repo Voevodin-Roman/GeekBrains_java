@@ -16,6 +16,7 @@ public class GameBody {
     }
 
     public void fillStatus() {
+        // Метод рандомно расставляет мины, собирает игровое поле и передает его в игру
         int[][] board = new int[width][height];
         int mines = mine;
         final Random random = new Random();
@@ -32,6 +33,7 @@ public class GameBody {
 
     }
     private int[][] calculateMines(int[][] board) {
+        // Метод записывает значения полей не занятых минами
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (board[i][j] == MINE) {
@@ -44,7 +46,7 @@ public class GameBody {
     }
 
     private int getMinesCountAroundCell(int[][] board, int line, int row) {
-
+        //Метод подсчитывает количество мин рядом с ячейкой
         int mCount = 0;
         for (int i = line - 1; i <= line + 1; i++) {
             for (int j = row - 1; j <= row + 1; j++) {

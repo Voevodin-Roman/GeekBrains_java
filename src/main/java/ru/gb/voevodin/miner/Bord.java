@@ -12,17 +12,6 @@ public class Bord {
 
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getMine() {
-        return mine;
-    }
     public void goPlay(){
         GameBody gameBody = new GameBody(width, height, mine);
         gameBody.fillStatus();
