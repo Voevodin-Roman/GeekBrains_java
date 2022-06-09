@@ -128,9 +128,9 @@ public class GameLogic extends JFrame{
             case 6:
                 return "<html><h2><font color=\"purple\">6";
             case 7:
-                return "<html><h2><font color=\"purple\">6";
+                return "<html><h2><font color=\"purple\">7";
             case 8:
-                return "<html><h2><font color=\"purple\">6";
+                return "<html><h2><font color=\"purple\">8";
             case -10:
                 return "<html><h2><font color=\"red\">@";
             case -20:

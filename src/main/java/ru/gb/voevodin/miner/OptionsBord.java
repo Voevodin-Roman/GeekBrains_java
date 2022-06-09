@@ -39,6 +39,7 @@ public class OptionsBord extends JFrame {
         addmine.setFont(font25);
         add(addmine);
 
+
         JButton button = new JButton("OK");
         button.setFont(font25);
         add(button, BorderLayout.SOUTH);
